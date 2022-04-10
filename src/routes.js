@@ -21,6 +21,16 @@ const routes = [
     handler: getBookHandler,
   },
   {
+    method: 'PUT',
+    path: '/books/{bookId?}',
+    handler: updateBookHandler,
+  },
+  {
+    method: 'DELETE',
+    path: '/books/{bookId?}',
+    handler: deleteBookHandler,
+  },
+  {
     method: '*',
     path: '/',
     handler: (request, h) => {

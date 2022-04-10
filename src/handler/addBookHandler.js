@@ -1,5 +1,7 @@
 const { nanoid } = require('nanoid');
+
 const books = require('../books');
+
 const addBookHandler = (request, h) => {
   const {
     name,
@@ -13,10 +15,13 @@ const addBookHandler = (request, h) => {
   } = request.payload;
 
   const id = nanoid(16);
+
   const finished = pageCount === readPage;
+
   const insertedAt = new Date().toISOString();
+
   const updatedAt = insertedAt;
-  //ifpageCount === readPage
+
   const newBook = {
     name,
     year,
@@ -35,6 +40,7 @@ const addBookHandler = (request, h) => {
   books.push(newBook);
 
   const isSuccess = books.filter((books) => books.id === id).length > 0;
+
   if (name == '') {
     const response = h.response({
       status: 'fail',
