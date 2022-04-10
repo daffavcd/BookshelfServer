@@ -1,4 +1,8 @@
 const { addBookHandler } = require('./handler/addBookHandler');
+const { getAllBookHandler } = require('./handler/getAllBookHandler');
+const { getBookHandler } = require('./handler/getBookHandler');
+const { updateBookHandler } = require('./handler/updateBookHandler');
+const { deleteBookHandler } = require('./handler/deleteBookHandler');
 
 const routes = [
   {
@@ -8,38 +12,19 @@ const routes = [
   },
   {
     method: 'GET',
-    path: '/',
-    handler: (request, h) => {
-      return 'Homepage';
-    },
+    path: '/books',
+    handler: getAllBookHandler,
+  },
+  {
+    method: 'GET',
+    path: '/books/{bookId?}',
+    handler: getBookHandler,
   },
   {
     method: '*',
     path: '/',
     handler: (request, h) => {
       return 'Halaman tidak dapat diakses dengan method tersebut';
-    },
-  },
-  {
-    method: 'GET',
-    path: '/users/{username?}',
-    handler: (request, h) => {
-      const { username = 'stranger' } = request.params;
-      return `Hello, ${username}!`;
-    },
-  },
-  {
-    method: 'GET',
-    path: '/about',
-    handler: (request, h) => {
-      return 'About page';
-    },
-  },
-  {
-    method: '*',
-    path: '/about',
-    handler: (request, h) => {
-      return 'Halaman tidak dapat diakses dengan method';
     },
   },
   {
