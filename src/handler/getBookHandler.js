@@ -4,7 +4,7 @@ const getBookHandler = (request, h) => {
     
   const { bookId } = request.params;
 
-  const book = books.filter((n) => n.bookId === bookId)[0];
+  const book = books.filter((n) => n.id === bookId)[0];
 
   if (book !== undefined) {
     const response = h.response({
@@ -13,7 +13,7 @@ const getBookHandler = (request, h) => {
         book,
       },
     });
-    response.code(404);
+    response.code(200);
     return response;
   }
 
